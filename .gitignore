@@ -1,0 +1,17 @@
+# Ignore the configuration file with secrets
+config.py
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore environment files (optional)
+.env
+.venv
+env/
+venv/
