@@ -1,5 +1,6 @@
 import anthropic
-from config import CLAUDE_API_KEY
+import os
+CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY")
 
 client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
 
