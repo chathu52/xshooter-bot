@@ -2,7 +2,11 @@
 import csv
 import datetime
 import telegram
-from config import TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, CLAUDE_API_KEY
+
+import os
+TELEGRAM_BOT_TOKEN = os.environ["TELEGRAM_BOT_TOKEN"]
+TELEGRAM_CHAT_ID = os.environ["TELEGRAM_CHAT_ID"]
+CLAUDE_API_KEY = os.environ["CLAUDE_API_KEY"]
 from claude_predictor import get_signal_prediction
 
 # Initialize bot
