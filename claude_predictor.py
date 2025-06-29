@@ -1,19 +1,21 @@
+# claude_predictor.py
+
 import anthropic
-import os
-CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY")
 
-client = anthropic.Anthropic(api_key=CLAUDE_API_KEY)
+def get_signal_prediction(crash_data, api_key):
+    client = anthropic.Client(api_key=api_key)
 
-def ask_claude(prompt):
-    try:
-        response = client.messages.create(
-            model="claude-3-opus-20240229",  # or use 'claude-3-sonnet-20240229'
-            max_tokens=1000,
-            temperature=0.7,
-            messages=[
-                {"role": "user", "content": prompt}
-            ]
-        )
-        return response.content[0].text
-    except Exception as e:
-        return f"Error from Claude: {str(e)}"
+    prompt = f"""You are a crash predictor bot. Based on the past crashes: {crash_data}, should the next round be BET or WAIT? Only reply with BET or WAIT."""
+
+    response = client.completions.create(
+        prompt=prompt,
+        model="claude-2",
+        max_tokens_to_sample=100
+    )
+
+    prediction_text = response.completion.strip().upper()
+
+    # Confidence simulation — adjust or replace with real logic
+    confidence = 90.0 if "BET" in prediction_text else 60.0
+
+    return prediction_text, confidence
