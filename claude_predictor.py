@@ -1,22 +1,16 @@
 import anthropic
 
-def get_signal_prediction(crash_data, api_key):
-    client = anthropic.Anthropic(api_key=api_key)
+client = anthropic.Anthropic(
+    api_key="your_api_key"  # Replace with your real key or set as env variable
+)
 
-    response = client.messages.create(
-        model="claude-3.5-sonnet-20240620",  # ✅ Correct model ID
-        max_tokens=100,
-        temperature=0,
-        system="You are a crash predictor bot. Only reply with BET or WAIT.",
-        messages=[
-            {
-                "role": "user",
-                "content": f"Based on the past crashes: {crash_data}, should the next round be BET or WAIT?"
-            }
-        ]
-    )
+message = client.messages.create(
+    model="claude-3.5-sonnet-20240627",  # ✅ Correct model ID
+    max_tokens=1000,
+    temperature=1,
+    messages=[
+        {"role": "user", "content": "What is the capital of France?"}
+    ]
+)
 
-    prediction_text = response.content[0].text.strip().upper()
-    confidence = 90.0 if "BET" in prediction_text else 60.0
-
-    return prediction_text, confidence
+print(message.content[0].text)
