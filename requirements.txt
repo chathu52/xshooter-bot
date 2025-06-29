@@ -1,5 +1,3 @@
+anthropic==0.38.0
 python-telegram-bot==20.3
-requests
-pandas
-openai
-anthropic
+python-dotenv
