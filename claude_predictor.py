@@ -1,5 +1,3 @@
-# claude_predictor.py
-
 import anthropic
 
 def get_signal_prediction(crash_data, api_key):
@@ -16,7 +14,7 @@ def get_signal_prediction(crash_data, api_key):
     # Make API call
     response = client.completions.create(
         prompt=prompt,
-        model="claude-2",
+        model="claude-2.0",  # ✅ Fixed model name
         max_tokens_to_sample=10  # Reduced for stricter responses
     )
 
