@@ -4,7 +4,7 @@ def get_signal_prediction(crash_data, api_key):
     client = anthropic.Anthropic(api_key=api_key)
 
     response = client.messages.create(
-        model="claude-3-sonnet",  # <-- use this base model name
+        model="claude-3.5-sonnet-20250514",  # ✅ Correct Claude 3.5 Sonnet ID
         max_tokens=100,
         temperature=0,
         system="You are a crash predictor bot. Only reply with BET or WAIT.",
