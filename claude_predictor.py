@@ -11,7 +11,7 @@ def get_signal_prediction(crash_data, api_key):
 
     response = client.completions.create(
         prompt=prompt,
-        model="claude-v1.3",  # ✅ Correct model name for completions API
+        model="claude-v1",  # ✅ Valid for completions.create
         max_tokens_to_sample=10
     )
 
